@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ topic.capitalize() }} Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ topic.capitalize() }} Notes</h1>
+        <p>Here are some useful commands and guidance for {{ topic }}:</p>
+        <pre>
+{% if topic == 'linux' %}
+ls - List files
+cd - Change directory
+pwd - Print working directory
+{% elif topic == 'git' %}
+git init - Initialize a repository
+git add . - Add all changes
+git commit -m "message" - Commit changes
+{% elif topic == 'docker' %}
+docker build -t myapp . - Build an image
+docker run -p 5000:5000 myapp - Run a container
+{% elif topic == 'jenkins' %}
+sudo systemctl start jenkins - Start Jenkins
+sudo systemctl status jenkins - Check Jenkins status
+{% endif %}
+        </pre>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>
